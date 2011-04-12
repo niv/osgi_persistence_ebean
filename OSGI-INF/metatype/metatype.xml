@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.0.0">
+
+	<OCD description="JDBC connection info" name="PersistenceService" id="es.elv.osgi.persistence.ebean.configuration">
+		<AD name="Username" id="connection.username" required="true" type="String" default="sa" />
+		<AD name="Password" id="connection.password" required="true" type="String" default="" />
+		<AD name="JDBC URL" id="connection.url" required="true" type="String" default="jdbc:hsqldb:file:tmp/testdb/test" />
+		<AD name="JDBC driver" id="connection.driver_class" required="true" type="String" default="org.hsqldb.jdbcDriver">
+			<Option label="HSQLDB" value="org.hsqldb.jdbcDriver" />
+			<Option label="PostgreSQL" value="org.postgresql.Driver" />
+		</AD>
+		<AD name="Heartbeat SQL query (leave empty to derive from DatabasePlatform)" id="heartbeatSql"
+			required="true" type="String" default="select 1;" />
+		<AD name="Show SQL queries on stdout" id="show_sql" required="false" type="Boolean" default="false" />
+		<AD name="Generate DDL on activate" id="ddlgenerate" required="true" type="Boolean" default="false" />
+		<AD name="Run DDL on activate (this will DROP your tables!)" id="ddlrun" required="true" type="Boolean" default="false" />
+
+		<AD name="Database schema naming convention" id="namingConvention" required="true" type="String"
+			default="es.elv.osgi.persistence.ebean.PackageAsSchemaNamingConvention" />
+
+		<AD name="Autofetch profiling" id="autofetch.profile" required="true" type="Boolean" default="false" />
+		<AD name="Autofetch profiling rate" id="autofetch.profiling_rate" required="true" type="Double" default="0.05" />
+		<AD name="Autofetch query tuning" id="autofetch.querytuning" required="true" type="Boolean" default="false" />
+	</OCD>
+
+	<Designate pid="es.elv.osgi.persistence.ebean.configuration">
+		<Object ocdref="es.elv.osgi.persistence.ebean.configuration" />
+	</Designate>
+
+</metatype:MetaData>

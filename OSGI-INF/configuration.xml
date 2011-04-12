@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" configuration-policy="require" immediate="true" name="es.elv.osgi.persistence.ebean.configuration">
+   <implementation class="es.elv.osgi.persistence.ebean.impl.Impl"/>
+   <service>
+      <provide interface="org.osgi.service.cm.ManagedService"/>
+      <provide interface="es.elv.osgi.persistence.ebean.PersistenceService"/>
+   </service>
+   <reference bind="addMCS" cardinality="0..n" interface="es.elv.osgi.persistence.ebean.PersistentModelClassService" name="PersistentModelClassService" policy="dynamic" unbind="removeMCS"/>
+</scr:component>
